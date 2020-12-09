@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='index/index-styles.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='nav-bar.css') }}">
+    <title>PC-info</title>
+</head>
+<body>
+    <div class="top_navigation-bar">
+        <div class="nav-bar_linkWrapper nav-bar_logo">
+            <a href='index.html'>foton</a>
+        </div>
+        <div class="nav-bar_linkWrapper">
+            <a href="news.html">news</a>
+        </div>
+        <div class="nav-bar_linkWrapper">
+            <a href="/">compare</a>
+        </div>
+        <div class="nav-bar_linkWrapper nav-bar_search">
+            <a href="/">search</a>
+        </div>
+        
+        <div class="nav-bar_linkWrapper nav-bar_login ">
+            <a href="register.html">
+                <div class="img-wrapper">
+                    <img src="/static/index/index-images/index-IMG_LoginIn.png" alt="LogIn">
+                </div>
+                <div class="text-wrapper">
+                    LogIn
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="afterNav-bar_space"></div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    <div>
+        <div class="sell-out_container">
+            <div class="sell-out_hw">
+                <img src="/static/index/index-images/index-banner.jpg">
+            </div>
+        </div>
+    
+        <div class="top-rated_container">
+            <div class="top-rated_items">
+                <div class="top-rated-item-wrapper">
+                    <a href="index.html">
+                        <div class="top-rated-item_text">
+                            <p>GPUs </p>
+                        </div>
+                        <div class="top-rated-item-image">
+                            <img src="/static/index/index-images/index-gpu.png">
+                        </div>
+                    </a>
+                </div>
+                <div class="top-rated-item-wrapper">
+                    <a href="index/index.html">
+                        <div class="top-rated-item_text">
+                            <p>CPUs </p>
+                        </div>
+                        <div class="top-rated-item-image">
+                            <img src="/static/index/index-images/index-cpu.jpg">
+                        </div>
+                    </a>
+                </div>
+                <div class="top-rated-item-wrapper">
+                    <a href="index/index.html">
+                        <div class="top-rated-item_text">
+                            <p>RAMs </p>
+                        </div>
+                        <div class="top-rated-item-image">
+                            <img src="/static/index/index-images/index-ram.jpg">
+                        </div>
+                    </a>
+                </div>
+                <div class="top-rated-item-wrapper">
+                    <a href="index/index.html">
+                        <div class="top-rated-item_text">
+                            <p>Motherboards </p>
+                        </div>
+                        <div class="top-rated-item-image">
+                            <img src="/static/index/index-images/index-mb.jpg">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

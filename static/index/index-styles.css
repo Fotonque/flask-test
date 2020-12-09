@@ -1,0 +1,132 @@
+body{
+    margin: 0px;
+}
+
+.afterNav-bar_space{
+    padding-top: 100px;
+    width: 100%;
+}
+
+/*
+
+.top_navigation-bar .nav-bar_login{
+    font-size: 30px;
+    overflow: hidden;
+    align-self: stretch;
+    align-items: center;
+    text-align: center;
+    display: grid;
+    width: 10%;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(136, 32, 32);
+    
+}
+
+.top_navigation-bar .nav-bar_login a{
+    position: relative;
+    left: 50%;
+    width: 100%;
+}
+
+.top_navigation-bar .nav-bar_login .img-wrapper img {
+    width: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+.top_navigation-bar .nav-bar_login .text-wrapper{
+    position: absolute;
+    color: aliceblue;
+    align-items: center;
+    top: 0;
+    display: grid;
+    height: 100%;
+    padding-left: 14%;
+}
+
+*/
+
+.sell-out_container{
+    background-color: black;
+    padding-top: 1px;
+    width: 100%;
+}
+
+.sell-out_container .sell-out_hw{
+    margin-top: 100px;
+    width: 100%;
+    height: 100%;
+    background: black;
+    border-bottom: 3px solid darkorchid;
+    border-left: 3px solid darkorchid;
+    box-sizing: border-box;
+    border-radius: 10px 10px ;
+}
+
+.sell-out_container .sell-out_hw img{ 
+    width: 100%;
+    height: 600px;
+}
+
+
+.top-rated_container{
+    background-color: black;
+    /*position: sticky;*/
+}
+
+/*
+.top-rated_container .top-rated-item-wrapper{
+    filter: saturate(0%);   
+    
+}
+
+.top-rated_container .top-rated-item-wrapper:hover{
+    filter: saturate(100%);
+
+}
+*/
+
+.top-rated_container .top-rated_items{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-right: 3px solid darkorchid;
+    border-bottom: 3px solid darkorchid;
+    border-radius: 100px;
+    height: 1200px;
+
+}
+
+.top-rated_container img{
+    width: 90%;
+    height: 400px;
+}
+
+.top-rated_container .top-rated_items .top-rated-item-wrapper{
+    display: grid;
+    align-items: center;
+}
+
+
+.top-rated_container .top-rated_items .top-rated-item-wrapper .top-rated-item_text{
+    text-align: center;
+    vertical-align: middle;
+    font-size: 25px;
+}
+
+.top-rated_container .top-rated_items .top-rated-item-wrapper .top-rated-item_text p{
+    color: white;
+}
+/*
+.top-rated_container .top-rated_items .top-rated-item-wrapper{
+    width: 50%;
+    height: 100%;
+}
+
+.top-rated_container .top-rated_items .top-rated-item-wrapper .top-rated_item_text{
+    position: absolute;
+}
+
+.top-rated-item-image img{
+    width: 50%;
+}
+*/

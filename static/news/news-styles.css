@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+}
+
+.afterNav-bar_space{
+    padding-top: 100px;
+    width: 100%;
+}
+
+.posts_container{
+    margin: 5px solid black;
+    margin-left: 5%;
+}
+
+.posts_container .posts_title{
+    width: 100%;
+    height: 50px;
+    margin-top: 60px;
+    border-bottom: 2px solid black;
+}
+
+.post{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    border-bottom: 2px solid black;
+    width: 100%;
+}
+
+.post .post_right{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.post .post_left{
+    align-content: center;
+    align-self: center;
+}
+
+.post .post_right .post_info{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.post .post_right .content{
+    text-align: justify;
+}
+
+.post .post_left #post_img{
+    width: 200px;
+    height: 100px;
+}

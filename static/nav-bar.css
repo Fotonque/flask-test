@@ -1,0 +1,80 @@
+.top_navigation-bar{
+    position: fixed ;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    height: 100px;
+    width: 100%;
+}
+
+.top_navigation-bar .nav-bar_linkWrapper{
+    background-color: black;
+    color: white;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 30px;
+    height: 100%;
+    width: 20%;
+}
+
+.top_navigation-bar .nav-bar_linkWrapper a{
+    color: white;
+    border-bottom: 5px solid black;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-grid;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    transition-duration: 0.5s; 
+}
+
+.top_navigation-bar .nav-bar_linkWrapper a:hover {
+    animation-name: hvr-back-pulse;
+    animation-duration: 5s;
+    animation-delay: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    background-color: rgb(90, 20, 20);
+    color: white;
+}
+
+@-webkit-keyframes hvr-back-pulse {
+50% {
+    background-color: rgba(180, 79, 79, 0.75);
+    border-bottom: 5px solid black;
+    color: gray;
+    }
+}
+@keyframes hvr-back-pulse {
+50% {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-bottom: 5px solid red;
+    color: red;
+    }
+}
+
+.top_navigation-bar .nav-bar_search{
+    width: 30%;
+}
+
+
+.top_navigation-bar .nav-bar_login{
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(90, 20, 20);;
+}
+
+.top_navigation-bar .nav-bar_login .img-wrapper img{
+    width: 40%;
+    height: 40%;
+}
+
+.top_navigation-bar .nav-bar_login .text-wrapper{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
