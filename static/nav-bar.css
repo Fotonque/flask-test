@@ -1,3 +1,7 @@
+body{
+    margin: 0px;
+}
+
 .top_navigation-bar{
     position: fixed ;
     display: flex;
@@ -77,4 +81,9 @@
     position: absolute;
     top: 30%;
     left: 30%;
+}
+
+.afterNav-bar_space{
+    padding-top: 100px;
+    width: 100%;
 }

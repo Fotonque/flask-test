@@ -66,30 +66,45 @@ class Database():
             "date": post()['date'],
             "content": post()['content'],
         })
-        return SUCCESS
+        return self.SUCCESS
 
     def find_user(self, user):
+        """
+        returns user class
+        None if user not found
+        """
         db_user = self.db.Users.find_one({
             'Login': user()['Login']
         })
         
-        if db_user != None:
-            user.email = db_user['Email']
-            posts = self.find_userPosts(user)
-            user.posts = posts
-        else:
+        if db_user == None:
             return None
-
+            
+        user.password = db_user['Password']
+        user.email = db_user['Email']
+        posts = self.find_userPosts(user)
+        user.posts = posts
         return user
 
-    def find_userPosts(self, user):
+    def check_credentials(self, user):
         """
-        Returns array of class Post
+        requires login and password to check match in database
+        returns True if credential are valid, False otherwise
+        """
+        db_user = self.db.Users.find_one({
+            'Login': user()['Login'],
+            'Password': user()['Password']
+        })
+        
+        if db_user == None:
+            return False
+        return True
+
+    def postsToArr(self, posts):
+        """
+        converts mongodb ouput of posts to array of Post class 
         """
         postsArr = []
-        posts = self.db.Posts.find({
-            'Login': user()['Login']
-        })
         for upost in posts:
             postsArr.append(
                 libpost.Post(
@@ -97,12 +112,29 @@ class Database():
                     upost['date'],
                     upost['content']
             ))
+        return postsArr
+
+    def find_userPosts(self, user):
+        """
+        Returns array of class Post
+        """
+        posts = self.postsToArr(self.db.Posts.find({
+                'Login': user()['Login']
+            }))
+        return posts
+
+
+    def find_lastPosts(self):
+        posts = self.db.Posts.find()
         return posts
 
 #db = Database(Cluster0)
-#testUser = libuser.User('log', 'pas')
+#out = db.find_lastPosts()
+#print(out)
+#testUser = libuser.User('asdf', '')
 #testPost = libpost.Post('title', 'date', 'somecontent')
 #result = db.find_user(testUser)
+#print(result())
 #res = db.insert_user(testUser)
 #print(res)
 #db.insert_userPost(testUser, testPost)

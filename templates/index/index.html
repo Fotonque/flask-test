@@ -1,39 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "baseLayout.html" %}
+{% block links %}
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='index/index-styles.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='nav-bar.css') }}">
-    <title>PC-info</title>
-</head>
-<body>
-    <div class="top_navigation-bar">
-        <div class="nav-bar_linkWrapper nav-bar_logo">
-            <a href='index.html'>foton</a>
-        </div>
-        <div class="nav-bar_linkWrapper">
-            <a href="news.html">news</a>
-        </div>
-        <div class="nav-bar_linkWrapper">
-            <a href="/">compare</a>
-        </div>
-        <div class="nav-bar_linkWrapper nav-bar_search">
-            <a href="/">search</a>
-        </div>
-        
-        <div class="nav-bar_linkWrapper nav-bar_login ">
-            <a href="register.html">
-                <div class="img-wrapper">
-                    <img src="/static/index/index-images/index-IMG_LoginIn.png" alt="LogIn">
-                </div>
-                <div class="text-wrapper">
-                    LogIn
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="afterNav-bar_space"></div>
+{% endblock links %}
+
+{% block body %}
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -97,6 +67,5 @@
             </div>
         </div>
     </div>
-
-</body>
-</html>
+    
+{% endblock body %}

@@ -1,5 +1,7 @@
 import flask
+import flask_login
 import pymongo
+import datetime
 
 import forms
 import database
@@ -18,28 +20,14 @@ try:
     print("Cluster connection: success")
 except:
     print("Cluster connection: error occurred")
+login_manager = flask_login.LoginManager(app)
 
-posts = [
-    {
-        'author': 'qwer',
-        'title': 'qwer',
-        'content': 'This property specifies whether the current rendered line should break if the content exceeds the boundary of the specified rendering box for an element (this is similar in some ways to the ‘clip’ and ‘overflow’ properties in intent.) This property should only apply if the element has a visual rendering, is an inline element with explicit height/width, is absolutely positioned and/or is a block element',
-        'date_posted': 'qwer'
-    },
-    {
-        'author': 'qwer',
-        'title': 'qwer',
-        'content': 'qwer',
-        'date_posted': 'qwer'
-    },
-    {
-        'author': 'qwer',
-        'title': 'qwer',
-        'content': 'qwer',
-        'date_posted': 'qwerq'
-    }
-]
-
+@login_manager.user_loader
+def load_user(user_id):
+    return db.find_user(
+        libuser.User(user_id)
+    )
+    
 @app.route('/')
 @app.route('/index.html')
 def index():
@@ -47,10 +35,22 @@ def index():
 
 @app.route('/news.html')
 def news():
+    posts = []
+    db_posts = db.find_lastPosts()
+    for post in db_posts:
+        posts.append({
+                'author': post['Login'],
+                'title': post['title'],
+                'content': post['content'],
+                'date_posted': post['date']
+            })
     return flask.render_template('news/news.html', posts = posts)
 
 @app.route('/register.html', methods=['GET', 'POST'])
 def register():
+    if flask_login.current_user.is_authenticated:
+        print("yea")
+        return flask.redirect(flask.url_for('myProfile'))
     form = forms.RegistrationForm()
     if flask.request.method == 'POST':
         if form.validate_on_submit():
@@ -68,7 +68,7 @@ def register():
             result = db.insert_user(user)
             print(result)
             if result == db.SUCCESS:
-                flask.flash('Account created', 'success')
+                flask.flash(u'Account created', 'success')
                 print("Account has been created")
                 print(user.login, user.password, user.email)
                 return flask.redirect(flask.url_for('index'))
@@ -81,12 +81,59 @@ def register():
 
 @app.route('/login.html', methods=['GET', 'POST'])
 def loginIn():
-    form = forms.LoginForm
+    form = forms.LoginForm()
     if flask.request.method == 'POST':
         if form.validate_on_submit():
-            return flask.redirect(flask.url_for('index'))
-    else:
-        return flask.render_template('login/login.html', form = form)
+            print(form.username)
+            print(form.password)
+
+            user = libuser.User(
+                form.username.data,
+                form.password.data
+            )
+            result = db.check_credentials(user)
+            if result:
+                flask_login.login_user(user, remember=False)
+                print(result)
+                return flask.redirect(flask.url_for('myProfile'))
+            else:
+                flask.flash(u'Account not found', 'error')
+                flask.flash(u'Credentials are wrong', 'error')
+
+    return flask.render_template('login/login.html', form = form)
+
+@app.route('/profile.html', methods=['GET', 'POST'])
+@flask_login.login_required
+def myProfile():
+    form = forms.PostForm()
+    currentUser = flask_login.current_user
+    print(form.title)
+    print(form.content)
+    print(flask.request.method)
+
+    if flask.request.method == 'POST':
+        
+        print(currentUser.id)
+        
+        post = libpost.Post(
+            form.title.data,
+            datetime.datetime.today(),
+            form.content.data
+        )
+        print(post())
+        
+        db.insert_userPost(
+            currentUser,
+            post
+        )
+        print("yea")
+            
+    return flask.render_template('user_profile/profile.html', currentUser = currentUser, form = form)
+
+@app.route("/logout.html")
+def logout():
+    flask_login.logout_user()
+    return flask.redirect(flask.url_for('index'))
 
 if __name__ == "__main__":
     app.run(debug=True)

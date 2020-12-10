@@ -22,3 +22,10 @@ class LoginForm(flask_wtf.FlaskForm):
     password = wtforms.PasswordField('Password',
         validators=[wtforms.validators.DataRequired()])
     submit = wtforms.SubmitField('Sign_up')
+
+class PostForm(flask_wtf.FlaskForm):
+    title = wtforms.StringField('Title',
+        validators=[wtforms.validators.DataRequired()])
+    content = wtforms.StringField('Content',
+        validators=[wtforms.validators.DataRequired()])
+    submit = wtforms.SubmitField('Create')
