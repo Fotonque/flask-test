@@ -14,11 +14,11 @@
             </div>
             <div class="post_right">
                 <div class="post_info">
-                    <p> author {{post.author}} </p>
-                    <p> title {{ post.title }} </p>
+                    <p class="post_author"> Author: {{post.author}} </p>
+                    <p class="post_title"> Title: {{ post.title }} </p>
                 </div>
-                <p class="content"> content {{post.content}} </p>
-                <p> date_posted {{post.date_posted}} </p>
+                <div class="content">Content: {{post.content}} </div>
+                <p> date_posted: {{post.date_posted}} </p>
             </div>
         </div>
         {% endfor %}

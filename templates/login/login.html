@@ -1,42 +1,49 @@
 {% extends "baseLayout.html" %}
-{% block body %}
 
-    {% with messages = get_flashed_messages(with_categories = true) %}
+{% block links %}
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='login/login-styles.css') }}">
+{% endblock links %}
+
+{% block body %}
+    <div class="login-box">
+        <h2>Login</h2>
+        {% with messages = get_flashed_messages(with_categories = true) %}
         {% if messages %}
             {% for category, message in messages %}
-                <div>
+                <h2>
                     {{ message }}
-                </div>
+                </h2>
             {% endfor %}
         {% endif %}
-    {% endwith %}
-    <div>
+        {% endwith %}
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset>
-                <legend>testlegend</legend>
-                {{ form.username.label() }}
+            
+            <div class="user-box">
+                <label>{{ form.username.label() }}</label>
+                <br>
                 {% if form.username.errors %}
                     {% for error in form.username.errors %}
-                        {{ error }}
+                        <label>{{ error }}</label>
                     {% endfor %}
                 {% endif %}
                 {{ form.username }}
-
+            </div>
+                
+            <div class="user-box">
+                <label>{{ form.password.label() }}</label>
                 <br>
-
-                {{ form.password.label() }}
                 {% if form.password.errors %}
                     {% for error in form.password.errors %}
-                        {{ error }}
+                        <label>{{ error }}</label>
                     {% endfor %}
                 {% endif %}
                 {{ form.password }}
+            </div>
 
-                <br>
-
-            </fieldset>
-            {{ form.submit() }}
+            <a><div class="button">
+                {{ form.submit() }}
+            </div></a>
         </form>
     </div>
     

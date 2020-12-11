@@ -1,0 +1,95 @@
+body{
+    background-color: black;
+}
+
+a{
+    color: white;
+    font-size: 30px;
+}
+
+.user_info{
+    background-color: rgb(32, 19, 19);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.user_info .info_header{
+    padding: 5%;
+    font-size: large;
+    font-weight: bold;
+    text-transform: uppercase;
+    font: outline;
+    color: rgb(197, 197, 197);
+}
+
+.user_info .login{
+    padding-left: 5%;
+    padding-top: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.user_info .login div{
+    color:  rgb(197, 197, 197);;
+}
+
+.user_info .email{
+    padding-left: 5%;
+    padding-top: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.user_info .email div{
+    color:  rgb(197, 197, 197);;
+}
+
+.user_info .password{
+    padding-left: 5%;
+    padding-top: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.user_info .password div{
+    color:  rgb(197, 197, 197);;
+}
+
+.user_info .posts{
+    padding-left: 5%;
+    padding-top: 5%;
+}
+
+.user_info .posts .myPosts div{
+    padding-top: 5%;
+    padding-bottom: 2%;
+    font-size: large;
+    font-weight: bold;
+    text-transform: uppercase;
+    font: outline;
+    color: rgb(197, 197, 197);
+}
+
+.user_info .posts .user_post{
+    display: grid;
+    
+}
+
+.user_info .posts div{
+    color:  rgb(197, 197, 197);
+}
+
+.user_info .posts .user_post{
+    margin-bottom: 3%;
+    border-bottom: 1px solid white;
+}
+
+.user_info .posts .user_post div{
+    max-width: 500px;
+}
+
+form{
+    margin-left: 5%;
+    margin-right: 5%;
+    color: white;
+}

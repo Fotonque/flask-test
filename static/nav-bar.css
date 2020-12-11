@@ -87,3 +87,14 @@ body{
     padding-top: 100px;
     width: 100%;
 }
+
+.top_navigation-bar a:hover {
+    background: #a70000;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #a70000,
+                0 0 25px #a70000,
+                0 0 50px #a70000,
+                0 0 100px #a70000;
+  }
+  

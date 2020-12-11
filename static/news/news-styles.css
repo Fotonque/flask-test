@@ -1,21 +1,23 @@
 body{
     margin: 0;
-}
-
-.afterNav-bar_space{
-    padding-top: 100px;
-    width: 100%;
+    background-color: black;
 }
 
 .posts_container{
+    background-color: rgb(167, 141, 141);
     margin: 5px solid black;
+    margin-right: 5%;
     margin-left: 5%;
 }
 
 .posts_container .posts_title{
-    width: 100%;
+    font-size: large;
+    width: 80%;
     height: 50px;
+    padding: 40px;
     margin-top: 60px;
+    font-weight: bold;
+    text-decoration-line: underline;
     border-bottom: 2px solid black;
 }
 
@@ -23,13 +25,14 @@ body{
     display: grid;
     grid-template-columns: 1fr 5fr;
     border-bottom: 2px solid black;
-    width: 100%;
+    width: 80%;
 }
 
-.post .post_right{
+.post:hover{
     margin-left: 5%;
-    margin-right: 5%;
+    transition-duration: 1s;
 }
+
 
 .post .post_left{
     align-content: center;
@@ -37,16 +40,31 @@ body{
 }
 
 .post .post_right .post_info{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+    display: inline-flex;
 }
 
-.post .post_right .content{
-    text-align: justify;
+.post_info .post_right .post_author{
+    display: inline-block;
+    min-width: 200px;
+    overflow-wrap: break-word;
 }
 
 .post .post_left #post_img{
     width: 200px;
     height: 100px;
 }
+
+.post .content{
+    display: inline-block;
+    width: 70%;
+    overflow-wrap: break-word;
+}
+
+.post_info .post_title{
+    display: inline-block;
+    width: 50%;
+    min-width: 400px;
+    max-width: 400px;
+    overflow-wrap: break-word;
+}
+

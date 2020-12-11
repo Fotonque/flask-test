@@ -14,7 +14,7 @@ class RegistrationForm(flask_wtf.FlaskForm):
     
     confirmPassword = wtforms.PasswordField('Confirm_password',
         validators=[wtforms.validators.DataRequired(), wtforms.validators.equal_to('password', message='Passwords must match')])
-    submit = wtforms.SubmitField('Sign_up')
+    submit = wtforms.SubmitField('Sign up')
 
 class LoginForm(flask_wtf.FlaskForm):
     username = wtforms.StringField('Username', 

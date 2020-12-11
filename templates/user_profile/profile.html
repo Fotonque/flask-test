@@ -1,17 +1,53 @@
 {% extends "baseLayout.html" %}
+
+{% block links %}
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='user_profile/profile.css') }}">
+{% endblock links %}
+
 {% block body %}
 
-{{ currentUser.id }}
-{{ currentUser.email }}
-{{ currentUser.password }}
+<a class="logout" href="{{ url_for('logout') }}">Log me out!</a>
 
-{% for post in currentUser.posts %}
-    <p>title: {{ post.title }} </p>
-    <p>date: {{ post.date }} </p>
-    <p>content: {{ post.content }} </p>
-{% endfor %}
+<div class="user_info">
+    <div class="info_header">your information</div>
+    <div class="login">
+        <div>MyLogin</div>
+        <div class="user_login">
+            {{ currentUser.id }}
+        </div>
+    </div>
+    <div class="email">
+        <div>MyEmail</div>
+        <div class="user_email">
+            {{ currentUser.email }}
+        </div>
+    </div>
+    <div class="password">
+        <div>MyPassword</div>
+        <div class="user_password">
+            {{ currentUser.password }}
+        </div>
+    </div>
+
+
+    <div class="posts">
+        <div class="myPosts">
+            <div>MyPosts</div>
+        </div>
+
+        {% for post in currentUser.posts %}
+        <div class="user_post">
+            <div class="title">title: {{ post.title }} </div>
+            <div class="date">date: {{ post.date }} </div>
+            <div class="content">content: {{ post.content }} </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 <form action="" method="POST">
+    
+    {{ form.hidden_tag() }}
     <fieldset>
         {{ form.title.label() }}
         {% if form.title.errors %}
@@ -25,7 +61,7 @@
 
         {{ form.content.label() }}
         {% if form.content.errors %}
-            {% for error in form.username.errors %}
+            {% for error in form.content.errors %}
                 {{ error }}
             {% endfor %}
         {% endif %}
@@ -34,8 +70,6 @@
 
     {{ form.submit() }}
 </form>
-
-<a href="{{ url_for('logout') }}">get me out</a>
 
 
 {% endblock body %}

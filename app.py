@@ -112,21 +112,21 @@ def myProfile():
     print(flask.request.method)
 
     if flask.request.method == 'POST':
-        
-        print(currentUser.id)
-        
-        post = libpost.Post(
-            form.title.data,
-            datetime.datetime.today(),
-            form.content.data
-        )
-        print(post())
-        
-        db.insert_userPost(
-            currentUser,
-            post
-        )
-        print("yea")
+        if form.validate_on_submit():
+            print(currentUser.id)
+            
+            post = libpost.Post(
+                form.title.data,
+                datetime.datetime.today(),
+                form.content.data
+            )
+            print(post())
+            
+            db.insert_userPost(
+                currentUser,
+                post
+            )
+            return flask.render_template('user_profile/profile.html', currentUser = currentUser, form = form)        
             
     return flask.render_template('user_profile/profile.html', currentUser = currentUser, form = form)
 
